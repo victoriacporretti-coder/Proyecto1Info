@@ -1,6 +1,36 @@
+#define pinboton 4
+#define pinV 5
+#define pinA 18
+#define pinR 19
 
 
-void Setup ()
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  pinMode(pinboton, INPUT);
+  pinMode(pinR, OUTPUT);
+  pinMode(pinA, OUTPUT);
+  pinMode(pinV, OUTPUT);
+}
+
+void loop() 
 {
+  int estadoBoton; 
+  static int  estadoPin=LOW;
+  estadoBoton = digitalRead(pinboton);
+  digitalWrite(pinV, HIGH);
 
+  if(estadoBoton==HIGH)
+  {
+    digitalWrite(pinV, LOW);
+    digitalWrite(pinA, HIGH);
+    delay(2000);
+    digitalWrite(pinA, LOW);
+    digitalWrite(pinR, HIGH);
+    delay(5000);
+    digitalWrite(pinR, LOW);
+    digitalWrite(pinA, HIGH);
+    delay(2000);
+
+  }
 }
