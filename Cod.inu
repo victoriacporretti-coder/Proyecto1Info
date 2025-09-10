@@ -1,0 +1,165 @@
+#define pinboton 4
+#define pinV 5
+#define pinA 18
+#define pinR 19
+#define LedA 32
+#define LedB 33
+#define LedC 14
+#define LedD 12
+#define LedE 13
+#define LedF 25
+#define LedG 26
+#define pinbuz 21
+
+void inicializar ()
+{
+  //Anodo. HIGH es apagado
+   digitalWrite(LedA, HIGH);
+   digitalWrite(LedB, HIGH);
+   digitalWrite(LedC, HIGH);
+   digitalWrite(LedD, HIGH);
+   digitalWrite(LedE, HIGH);
+   digitalWrite(LedF, HIGH);
+   digitalWrite(LedG, HIGH);
+}
+
+void contador ()
+{ //faltan 9 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, LOW);
+   digitalWrite(LedE, HIGH);
+   digitalWrite(LedF, LOW);
+   digitalWrite(LedG, LOW);
+   delay(1000);
+    //faltan 8 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, LOW);
+   digitalWrite(LedE, LOW);
+   digitalWrite(LedF, LOW);
+   digitalWrite(LedG, LOW);
+   delay(1000);
+    //faltan 7 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, HIGH);
+   digitalWrite(LedE, HIGH);
+   digitalWrite(LedF, HIGH);
+   digitalWrite(LedG, HIGH);
+   delay(1000);
+   //faltan 6 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, HIGH);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, LOW);
+   digitalWrite(LedE, LOW);
+   digitalWrite(LedF, LOW);
+   digitalWrite(LedG, LOW);
+   delay(1000);
+    //faltan 5 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, HIGH);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, LOW);
+   digitalWrite(LedE, HIGH);
+   digitalWrite(LedF, LOW);
+   digitalWrite(LedG, LOW);
+   delay(1000);
+    //faltan 4 seg
+   digitalWrite(LedA, HIGH);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, HIGH);
+   digitalWrite(LedE, HIGH);
+   digitalWrite(LedF, LOW);
+   digitalWrite(LedG, LOW);
+   delay(1000);
+   //faltan 3 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, LOW);
+   digitalWrite(LedE, HIGH);
+   digitalWrite(LedF, HIGH);
+   digitalWrite(LedG, LOW);
+   digitalWrite(pinbuz, HIGH);
+   delay(1000);
+   digitalWrite(pinbuz, LOW);
+    //faltan 2 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, HIGH);
+   digitalWrite(LedD, LOW);
+   digitalWrite(LedE, LOW);
+   digitalWrite(LedF, HIGH);
+   digitalWrite(LedG, LOW);
+   digitalWrite(pinbuz, HIGH);
+   delay(1000);
+   digitalWrite(pinbuz, LOW);
+   //faltan 1 seg
+   digitalWrite(LedA, HIGH);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, HIGH);
+   digitalWrite(LedE, HIGH);
+   digitalWrite(LedF, HIGH);
+   digitalWrite(LedG, HIGH);
+   digitalWrite(pinbuz, HIGH);
+   delay(1000);
+   digitalWrite(pinbuz, LOW);
+  //faltan 0 seg
+   digitalWrite(LedA, LOW);
+   digitalWrite(LedB, LOW);
+   digitalWrite(LedC, LOW);
+   digitalWrite(LedD, LOW);
+   digitalWrite(LedE, LOW);
+   digitalWrite(LedF, LOW);
+   digitalWrite(LedG, HIGH);
+   delay(500);
+   inicializar();
+}
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  pinMode(pinbuz,OUTPUT);
+  pinMode(pinboton,INPUT);
+  pinMode(pinR, OUTPUT);
+  pinMode(pinA, OUTPUT);
+  pinMode(pinV, OUTPUT);
+  pinMode(LedA, OUTPUT);
+  pinMode(LedB, OUTPUT);
+  pinMode(LedC, OUTPUT);
+  pinMode(LedD, OUTPUT);
+  pinMode(LedE, OUTPUT);
+  pinMode(LedF, OUTPUT);
+  pinMode(LedG, OUTPUT);
+  
+}
+
+void loop() 
+{
+  int estadoBoton, proceso=LOW; 
+  //static int  estadoPin=LOW;
+  proceso = digitalRead(pinboton);
+  digitalWrite(pinV, HIGH);
+ inicializar();
+  if(proceso==HIGH)
+  {
+    digitalWrite(pinV, LOW);
+    digitalWrite(pinA, HIGH);
+    delay(2000);
+    digitalWrite(pinA, LOW);
+    digitalWrite(pinR, HIGH);
+    delay(6000);
+    contador();
+    digitalWrite(pinR, LOW);
+    digitalWrite(pinA, HIGH);
+    delay(2000);
+ digitalWrite(pinA,LOW);
+ proceso=LOW;
+  }
+}
